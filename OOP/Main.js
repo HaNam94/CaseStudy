@@ -11,6 +11,7 @@ class Student {
     render() {
         const studentList = document.getElementById("students");
         const studentItem = document.createElement("li");
+        // studentItem.innerHTML = ""
         studentItem.innerHTML = `
       <p><strong>ID:</strong> <span class="student-id">${this.id}</span></p>
       <p><strong>Họ và tên:</strong> <span class="full-name">${this.fullName}</span></p>
