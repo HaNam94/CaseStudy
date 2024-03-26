@@ -42,7 +42,7 @@ function save() {
         document.getElementById('phone-error').innerHTML = '';
     }
     if (address === '') {
-        document.getElementById('address-error').innerHTML = '*vui long địa chỉ';
+        document.getElementById('address-error').innerHTML = '*vui long nhập địa chỉ';
     } else {
         document.getElementById('address-error').innerHTML = '';
     }
