@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 sliceSound.play();
                 fruit.remove();
                 score++;
-                scoreDisplay.textContent = score;
+                scoreDisplay.textContent = String(score);
             });
 
             fruit.addEventListener('animationend', function() {
                 fruit.remove();
                 if (!isGameOver) {
                     score--;
-                    scoreDisplay.textContent = score;
+                    scoreDisplay.textContent = String(score);
                     if (score < 0) {
                         endGame();
                     }
