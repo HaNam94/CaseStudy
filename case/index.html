@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="renderListPersonnel()">
+<div class="container">
+    <div>
+        <div class="form-student">
+            <h3>Thông tin sinh viên</h3>
+            <label>Full name: </label>
+            <input type="text" name="" id="fullName">
+            <span id="fullname-error" class="error"></span>
+            <br>
+
+            <label>MSSV: </label>
+            <input type="text" name="" id="mssv">
+            <span id="mssv-error" class="error"></span>
+            <br>
+
+            <label>Email: </label>
+            <input type="text" name="" id="email">
+            <span id="email-error" class="error"></span>
+            <br>
+
+            <label>Phone: </label>
+            <input type="text" name="" id="phone">
+            <span id="phone-error" class="error"></span>
+            <br>
+
+            <label>Address: </label>
+            <input type="text" name="" id="address">
+            <span id="address-error" class="error"></span>
+            <br>
+
+            <label>Sex: </label>
+            <input type="radio" name="gender" id="male" value="1">Nam
+            <input type="radio" name="gender" id="female" value="0">Nữ
+            <span id="gender-error" class="error"></span>
+            <br>
+
+            <label>&nbsp;</label>
+            <span class="option">
+                    <button onclick="save()">Save</button>
+                    <input onreset="reset()" type="reset" name="reset" value="Làm lại">
+                </span>
+
+        </div>
+    </div>
+
+    <div class="list-student" id="list-student">
+        <h3>List of students</h3>
+        <table id="grid-students" width="600px" border="1">
+        </table>
+    </div>
+</div>
+
+<script src="./main.js"></script>
+<!--<script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>-->
+</body>
+</html>
