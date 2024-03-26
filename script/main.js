@@ -1,4 +1,4 @@
-let store = new ProductManager();
+let store  = new ProductManager();
 
 function showAll() {
     let arr = store.findAll();

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Học Viên</title>
+    <link rel="stylesheet" href="Style2.css">
+
+
+</head>
+<body>
+<div class="container">
+    <h1>Quản Lý Sinh Viên</h1>
+    <div id="student-form">
+        <input type="text" id="student-id" placeholder="ID sinh viên" required>
+        <input type="text" id="full-name" placeholder="Họ và tên" required>
+        <input type="date" id="dob" required>
+        <select id="gender" required>
+            <option value="">Chọn giới tính</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select>
+        <input type="text" id="class" placeholder="Lớp" required>
+        <input type="file" id="avatar" accept="image/*" required>
+        <div class="buttons">
+            <button type="button" id="add-btn">Thêm</button>
+        </div>
+    </div>
+    <div class="student-list" id="student-list">
+        <input type="text" id="search" placeholder="Tìm kiếm">
+        <ul id="students"></ul>
+    </div>
+</div>
+<script src="Main.js"></script>
+</body>
+</html>

@@ -1,14 +1,14 @@
 class ProductManager {
     list;
     constructor() {
-        this.list = JSON.parse(localStorage.getItem("list"));
+        this.list = JSON.parse(localStorage.getItem("students"));
     }
     findAll(){
         return this.list;
     }
     add(newProduct){
         this.list.push(newProduct);
-        localStorage.setItem("list", JSON.stringify(this.list));
+        localStorage.setItem("students", JSON.stringify(this.list));
     }
 
     findIndexById(id){
@@ -27,6 +27,6 @@ class ProductManager {
     update(id, newProduct){
         let index = this.findIndexById(id);
         this.list[index] = newProduct;
-        localStorage.setItem("list", JSON.stringify(this.list));
+        localStorage.setItem("students", JSON.stringify(this.list));
     }
 }
