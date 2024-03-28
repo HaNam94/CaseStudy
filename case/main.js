@@ -139,12 +139,10 @@ function deletePersonnel (id) {
 }
 
 function reset() {
-    let check;
-    document.getElementById('fullName-error').innerHTML = '';
-    document.getElementById('mssv-error').innerHTML = '';
-    document.getElementById('email-error').innerHTML = '';
-    document.getElementById('phone-error').innerHTML = '';
-    document.getElementById('address-error').innerHTML = '';
-    check = true;
-    return check;
+    document.getElementById('fullName').value = '';
+    document.getElementById('mssv').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('address').value = '';
 }
+
