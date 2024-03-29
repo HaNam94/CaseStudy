@@ -5,6 +5,10 @@ function save() {
     let phone = document.getElementById('phone').value;
     let address = document.getElementById('address').value;
     let avatar = document.getElementById('avatar').value;
+    let avatarInput = document.getElementById('avatar');
+    if (avatarInput.files.length > 0) {
+        avatar = URL.createObjectURL(avatarInput.files[0]);
+    }
 
     let gender = '';
     if (document.getElementById('male').checked) {
@@ -60,7 +64,7 @@ function save() {
         document.getElementById('gender-error').innerHTML = ''
     }
 
-    if (fullname && email && phone && address && mssv && gender) {
+    if (fullname && email && phone && address && mssv && gender && avatar) {
         let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
         console.log({
             fullname: fullname,
@@ -103,6 +107,7 @@ function renderListPersonnel() {
 
     let tableContent = `<tr>
         <td>#</td>
+        <td>Avatar</td>
         <td>Full name</td>
         <td>MSSV</td>
         <td>Email</td>
@@ -119,6 +124,7 @@ function renderListPersonnel() {
 
         tableContent += `<tr>
             <td>${index}</td>
+            <td><img src="${student.avatar}" alt="Avatar" style="width: 50px; height: 50px;"></td>
             <td>${student.fullname}</td>
             <td>${student.mssv}</td>
             <td>${student.email}</td>
@@ -159,6 +165,8 @@ function reset() {
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
     document.getElementById('address').value = '';
+    document.getElementById('avatar').value = '';
+    document.getElementById('avatar-preview').src = '';
 }
 
 // function search() {
@@ -178,7 +186,7 @@ function searchStudent() {
     table = document.getElementById("grid-students");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1]; // Cột chứa tên sinh viên
+        td = tr[i].getElementsByTagName("td")[2]; // Cột chứa tên sinh viên
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -190,21 +198,21 @@ function searchStudent() {
     }
 }
 
-function previewAvatar() {
-    const fileInput = document.getElementById('avatar');
-    const imgPreview = document.getElementById('avatar-preview');
-
-    if (fileInput.files && fileInput.files[0]) {
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            imgPreview.src = e.target.result;
-            imgPreview.style.display = 'block';
-        };
-
-        reader.readAsDataURL(fileInput.files[0]);
-    }
-}
+// function previewAvatar() {
+//     const fileInput = document.getElementById('avatar');
+//     const imgPreview = document.getElementById('avatar-preview');
+//
+//     if (fileInput.files && fileInput.files[0]) {
+//         const reader = new FileReader();
+//
+//         reader.onload = function (e) {
+//             imgPreview.src = e.target.result;
+//             imgPreview.style.display = 'block';
+//         };
+//
+//         reader.readAsDataURL(fileInput.files[0]);
+//     }
+// }
 
 
 
