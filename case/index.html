@@ -41,6 +41,11 @@
             <span id="gender-error" class="error"></span>
             <br>
 
+            <label>Avatar: </label>
+            <input type="file" accept="image/*" id="avatar" onchange="previewAvatar()">
+            <img id="avatar-preview" src="" style="display:none;">
+            <br>
+
             <label>&nbsp;</label>
             <span class="option">
                     <button onclick="save()">Save</button>
@@ -52,8 +57,12 @@
 
     <div class="list-student" id="list-student">
         <h3>List of students</h3>
-        <table id="grid-students" width="600px" border="1">
-        </table>
+        <table id="grid-students" width="600px" border="1"></table>
+<!--        <input type="text" id="searchText" placeholder="Search..." >-->
+        <!--<button onclick="searchStudent()">Search</button>-->
+        <input type="text" id="searchInput" onkeyup="searchStudent()" placeholder="Nhập từ khóa tìm kiếm...">
+
+
     </div>
 </div>
 

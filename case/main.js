@@ -4,6 +4,7 @@ function save() {
     let email = document.getElementById('email').value;
     let phone = document.getElementById('phone').value;
     let address = document.getElementById('address').value;
+    let avatar = document.getElementById('avatar').value;
 
     let gender = '';
     if (document.getElementById('male').checked) {
@@ -68,6 +69,7 @@ function save() {
             phone: phone,
             address: address,
             gender: gender,
+            avatar: avatar,
         })
         students.push({
             fullname: fullname,
@@ -76,6 +78,7 @@ function save() {
             phone: phone,
             address: address,
             gender: gender,
+            avatar: avatar,
         });
 
         localStorage.setItem('students', JSON.stringify(students));
@@ -124,6 +127,7 @@ function renderListPersonnel() {
             <td>${student.address}</td>
             <td>
                 <a href="#" onclick='deletePersonnel(${studentID})'>Delete</a>
+                <a href="#" onclick='editPersonnel(${studentID})'>Edit</a>
             </td>
         </tr>`;
     });
@@ -138,6 +142,17 @@ function deletePersonnel (id) {
     renderListPersonnel();
 }
 
+function editPersonnel (id){
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')): [];
+    let student = students[id];
+    document.getElementById('fullName').value = student.fullname;
+    document.getElementById('mssv').value = student.mssv;
+    document.getElementById('email').value = student.email;
+    document.getElementById('phone').value = student.phone;
+    document.getElementById('address').value = student.address;
+    document.getElementById(student.gender === '1' ? 'male' : 'female').checked = true;
+}
+
 function reset() {
     document.getElementById('fullName').value = '';
     document.getElementById('mssv').value = '';
@@ -145,4 +160,51 @@ function reset() {
     document.getElementById('phone').value = '';
     document.getElementById('address').value = '';
 }
+
+// function search() {
+//     let searchText = document.getElementById('searchInput').value.toLowerCase();
+//     let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+//     let filteredStudents = students.filter(student =>
+//         student.fullname.toLowerCase().includes(searchText) ||
+//         student.mssv.toLowerCase().includes(searchText)
+//     );
+//     renderListPersonnel(filteredStudents);
+// }
+
+function searchStudent() {
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("grid-students");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Cột chứa tên sinh viên
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function previewAvatar() {
+    const fileInput = document.getElementById('avatar');
+    const imgPreview = document.getElementById('avatar-preview');
+
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block';
+        };
+
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}
+
+
 
