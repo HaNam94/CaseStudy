@@ -157,7 +157,30 @@ function editPersonnel (id){
     document.getElementById('phone').value = student.phone;
     document.getElementById('address').value = student.address;
     document.getElementById(student.gender === '1' ? 'male' : 'female').checked = true;
+
+    document.getElementById("edit").innerHTML = `<button onclick="edit(${id})">Save</button>`
+    document.getElementById("edit").setAttribute("data-id", id);
 }
+
+function edit(id) {
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+    let student = students[id];
+
+    student.fullname = document.getElementById('fullName').value;
+    student.mssv = document.getElementById('mssv').value;
+    student.email = document.getElementById('email').value;
+    student.phone = document.getElementById('phone').value;
+    student.address = document.getElementById('address').value;
+    student.gender = document.querySelector('input[name="gender"]:checked').value;
+
+    students[id] = student;
+    localStorage.setItem('students', JSON.stringify(students));
+    renderListPersonnel();
+    reset();
+
+    document.getElementById("edit").innerHTML = `<button onclick="save()">Save</button>`;
+}
+
 
 function reset() {
     document.getElementById('fullName').value = '';
